@@ -1,5 +1,7 @@
 package policies.rbac
 
+import data.values
+
 default allow := false
 
 default is_admin := false
@@ -9,9 +11,9 @@ allow {
 
 	user_has_role[role_name]
 
-	policy := data.role_grants[role_name].policies[policy_name]
+	policy := values.role_grants[role_name].policies[policy_name]
 
-	r := data.policies[policy].rules[rule]
+	r := values.policies[policy].rules[rule]
 
 	r.effect == "allow"
 	contains(r.verbs, input.verb)
@@ -19,12 +21,12 @@ allow {
 }
 
 is_admin {
-	u := data.user_roles[input.user].roles[_]
+	u := values.user_roles[input.user].roles[_]
 	u == "admin"
 }
 
 user_has_role[role_name] {
-	role_name := data.user_roles[input.user].roles[_]
+	role_name := values.user_roles[input.user].roles[_]
 }
 
 contains(d, elem) {
