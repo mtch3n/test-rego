@@ -1,5 +1,7 @@
 package policies.rbac
 
+import values.data as data
+
 default allow := false
 
 default is_admin := false
