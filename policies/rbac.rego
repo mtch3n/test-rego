@@ -1,6 +1,6 @@
 package policies.rbac
 
-import values.data as data
+import values as data
 
 default allow := false
 
