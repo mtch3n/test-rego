@@ -37,10 +37,6 @@ test_roles2[ur2]{
     ur2 := data.values.user_roles[_].roles[_]
 }
 
-test_roles3[ur3]{
-    ur3 := user_roles[_].roles[_]
-}
-
 contains(d, elem) {
 	d[_] = elem
 }
